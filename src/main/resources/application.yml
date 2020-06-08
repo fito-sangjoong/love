@@ -1,0 +1,29 @@
+server:
+  port: 80
+  error:
+    include-stacktrace: never
+
+origin: "*"
+
+spring:
+  jpa:
+    show-sql: true
+    open-in-view: false
+    properties:
+      hibernate.format_sql: true
+  jackson:
+    default-property-inclusion: non-null
+  datasource:
+    url: jdbc:mysql://database-1.czlhkjhghlsj.ap-northeast-2.rds.amazonaws.com
+    username: admin
+    password: 1234567890
+
+logging:
+  level:
+    root: info
+    org.springframework.beans: error
+    org.springframework.context: error
+    org.springframework.transaction: error
+    org.springframework.transaction.interceptor: error
+    org.springframework.web: error
+    org.hibernate: error
