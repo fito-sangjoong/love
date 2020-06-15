@@ -1,0 +1,25 @@
+version: 2.1
+orbs:
+  aws-ecr: circleci/aws-ecr@6.5.0
+  aws-ecs: circleci/aws-ecs@0.0.10
+workflows:
+  build-and-deploy:
+    jobs:
+      - aws-ecr/build-and-push-image:
+          name: build-and-push-image-love
+          dockerfile: dockerfile
+          create-repo: true
+          repo: love-api
+          filters:
+            branches:
+              only: master
+      - aws-ecs/deploy-service-update:
+          name: aws-ecs/deploy-service-update-love
+          requires:
+            - build-and-push-image-love
+          family: love-api-dev
+          cluster-name: "love"
+          container-image-name-updates: "container=api-dev,tag=dev"
+          filters:
+            branches:
+              only: master
