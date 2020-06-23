@@ -18,9 +18,9 @@ workflows:
           name: aws-ecs/deploy-service-update-love
           requires:
             - build-and-push-image-love
-          family: love-api-dev
+          family: love-api-prod
           cluster-name: "love"
-          container-image-name-updates: "container=api-dev,tag=dev"
+          container-image-name-updates: "container=api-prod,tag=prod"
           filters:
             branches:
               only: master
