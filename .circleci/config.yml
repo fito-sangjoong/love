@@ -9,6 +9,7 @@ workflows:
           name: build-and-push-image-love
           dockerfile: dockerfile
           create-repo: true
+          tag: "prod"
           repo: love-api
           filters:
             branches:
