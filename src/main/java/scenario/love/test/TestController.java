@@ -15,4 +15,9 @@ public class TestController {
     public boolean health() {
         return true;
     }
+
+    @GetMapping("/too")
+    public String test2() {
+        return "I Love You Too.";
+    }
 }
